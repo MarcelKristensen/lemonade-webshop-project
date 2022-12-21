@@ -1,0 +1,27 @@
+.checkout{
+    display: flex;
+    height: max-content;
+    padding: 20px 20px 0 20px;
+    gap: 20px;
+    flex: 1;
+  }
+
+  .checkout__background{
+    padding: 20px;
+    margin: 0 auto;
+    width: 30%;
+    background-color: white;
+  }
+
+  .checkout__background h3{
+    font-size: 30px;
+    text-align: center;
+    font-weight: 500;
+    padding-bottom: 20px;
+    border-bottom: 1px solid gainsboro;
+  }
+
+  .checkout__background strong{
+    font-size: 30px;
+    font-weight: 350;
+  }
