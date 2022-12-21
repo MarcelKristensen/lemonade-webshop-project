@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import "./Navbar.css";
-import { CartContext } from "../App";
+import { CartContext } from "./Product";
 
 const currencyOptions = {
   minimumFractionDigits: 2,

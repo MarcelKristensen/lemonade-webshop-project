@@ -1,6 +1,8 @@
 import React, { useReducer, createContext } from "react";
 import "./Product.css";
 import Navbar from "./Navbar";
+import Cart from "./Cart";
+import Checkout from "./Checkout";
 
 const products = [
   {
@@ -20,7 +22,7 @@ const products = [
   },
 ];
 
-//export const CartContext = createContext();
+export const CartContext = createContext();
 
 const currencyOptions = {
   minimumFractionDigits: 2,
@@ -63,22 +65,25 @@ export default function Product() {
   }
 
   return (
-    <div className="wrapper">
-      <div>Shopping Cart: {cart.length} total items.</div>
-      <div>Total: {getTotal(cart)}</div>
-      <div>
-        {products.map((product) => (
-          <div key={product.name}>
-            <div className="product">
-              <span role="img" aria-label={product.name}>
-                {product.emoji}
-              </span>
+    <CartContext.Provider value={{ cart, setCart }}>
+      <Navbar />
+      <div className="wrapper">
+        <div>Shopping Cart: {cart.length} total items.</div>
+        <div>Total: {getTotal(cart)}</div>
+        <div>
+          {products.map((product) => (
+            <div key={product.name}>
+              <div className="product">
+                <span role="img" aria-label={product.name}>
+                  {product.emoji}
+                </span>
+              </div>
+              <button onClick={() => add(product)}>Add</button>
+              <button onClick={() => remove(product)}>Remove</button>
             </div>
-            <button onClick={() => add(product)}>Add</button>
-            <button onClick={() => remove(product)}>Remove</button>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
-    </div>
+    </CartContext.Provider>
   );
 }
