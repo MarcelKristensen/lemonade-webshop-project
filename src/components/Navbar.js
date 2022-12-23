@@ -1,5 +1,4 @@
 import React, { useContext } from "react";
-import { useNavigate } from "react-router-dom";
 import "./Navbar.css";
 import { CartContext } from "./Product";
 
@@ -15,7 +14,6 @@ function getTotal(cart) {
 
 export default function Navbar() {
   const { cart } = useContext(CartContext);
-  const navigate = useNavigate();
   return (
     <nav>
       <img
@@ -24,8 +22,7 @@ export default function Navbar() {
         alt="Lemonade Logo"
       />
       <h3 className="nav__logo_text">Lemonade Webshop</h3>
-      <p>{getTotal(cart)}</p>
-      <div className="shopping__cart" onClick={() => navigate("/cart")}>
+      <div className="shopping__cart">
         <img
           src="Images/Cart.png"
           className="shopping__cart"
