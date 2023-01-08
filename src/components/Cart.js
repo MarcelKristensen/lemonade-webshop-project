@@ -2,15 +2,6 @@ import React, { useContext } from "react";
 import { CartContext } from "./Product";
 import "./Cart.css";
 
-const currencyOptions = {
-  minimumFractionDigits: 2,
-  maximumFractionDigits: 2,
-};
-
-function getTotal(cart) {
-  const total = cart.reduce((totalCost, item) => totalCost + item.price, 0);
-  return total.toLocaleString(undefined, currencyOptions);
-}
 
 export default function Cart() {
   const { cart } = useContext(CartContext);
@@ -29,7 +20,7 @@ export default function Cart() {
         <div>
           <h3>Shopping Cart</h3>
           {cart?.map((product) => (
-            <div key={product.id}>
+            <div key={product.name}>
               <div className="cartProduct">
                 <img
                   className="cartProduct__image"

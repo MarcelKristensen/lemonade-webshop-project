@@ -2,16 +2,6 @@ import React, { useContext } from "react";
 import "./Navbar.css";
 import { CartContext } from "./Product";
 
-const currencyOptions = {
-  minimumFractionDigits: 2,
-  maximumFractionDigits: 2,
-};
-
-function getTotal(cart) {
-  const total = cart.reduce((totalCost, item) => totalCost + item.price, 0);
-  return total.toLocaleString(undefined, currencyOptions);
-}
-
 export default function Navbar() {
   const { cart } = useContext(CartContext);
   return (

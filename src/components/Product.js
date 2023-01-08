@@ -59,16 +59,6 @@ const products = [
 
 export const CartContext = createContext();
 
-const currencyOptions = {
-  minimumFractionDigits: 2,
-  maximumFractionDigits: 2,
-};
-
-function getTotal(cart) {
-  const total = cart.reduce((totalCost, item) => totalCost + item.price, 0);
-  return total.toLocaleString(undefined, currencyOptions);
-}
-
 function cartReducer(state, action) {
   switch (action.type) {
     case "add":
@@ -94,11 +84,7 @@ export default function Product() {
   function add(product) {
     setCart({ product, type: "add" });
   }
-
-  function remove(product) {
-    setCart({ product, type: "remove" });
-  }
-
+  
   return (
     <CartContext.Provider value={{ cart, setCart }}>
       <Navbar />
