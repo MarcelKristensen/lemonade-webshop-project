@@ -21,12 +21,11 @@ function cartReducer(state, action) {
   }
 }
 
-function ProductProvider({children}) {
+function ProductProvider({ children }) {
   const [cart, setCart] = useReducer(cartReducer, []);
-  const value = {cart, setCart};
-  
-  
-  return <CartContext.Provider value={value}>{children}</CartContext.Provider>
+  const value = { cart, setCart };
+
+  return <CartContext.Provider value={value}>{children}</CartContext.Provider>;
 }
 
-export {ProductProvider}
+export { ProductProvider };

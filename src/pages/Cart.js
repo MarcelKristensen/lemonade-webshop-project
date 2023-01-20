@@ -1,12 +1,10 @@
 import React, { useContext } from "react";
-import { CartContext } from "../components/ProductContext"
+import { CartContext } from "../components/ProductContext";
 import "./Cart.css";
 import Total from "../components/Total";
 
-
 export default function Cart() {
-  const { cart } = useContext(CartContext);
-  const { setCart } = useContext(CartContext);
+  const { cart, setCart } = useContext(CartContext);
 
   function add(product) {
     setCart({ product, type: "add" });
@@ -15,6 +13,7 @@ export default function Cart() {
   function remove(product) {
     setCart({ product, type: "remove" });
   }
+
   return (
     <section className="cart">
       <div className="cart__left">

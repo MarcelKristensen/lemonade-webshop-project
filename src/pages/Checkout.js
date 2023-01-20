@@ -14,17 +14,17 @@ function getTotal(cart) {
 
 export default function Checkout() {
   const { cart } = useContext(CartContext);
-  
-    return (
-      <div className="checkout">
-        <div className="checkout__background">
-          <div>
-            <h3>
-              Total:
-              <strong>{getTotal(cart)} DKK</strong>
-            </h3>
-            {cart?.map((item) => (
-              <div className="checkout_in">
+
+  return (
+    <div className="checkout">
+      <div className="checkout__background">
+        <div>
+          <h3>
+            Total:
+            <strong>{getTotal(cart)} DKK</strong>
+          </h3>
+          {cart?.map((item) => (
+            <div className="checkout_in">
               <img
                 className="checkout__image"
                 src={process.env.PUBLIC_URL + `/Images/${item.img}`}
@@ -38,9 +38,9 @@ export default function Checkout() {
                 </p>
               </div>
             </div>
-            ))}
-          </div>
+          ))}
         </div>
       </div>
-    );
-  }
+    </div>
+  );
+}
