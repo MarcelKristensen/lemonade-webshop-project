@@ -1,12 +1,15 @@
 import React, { useReducer, createContext } from "react";
 
 export const CartContext = createContext();
+const initialState = [];
 
 function cartReducer(state, action) {
   switch (action.type) {
-    case "add":
+    case "addToCart":
+      return [];
+    case "increment":
       return [...state, action.product];
-    case "remove":
+    case "decrement":
       const productIndex = state.findIndex(
         (item) => item.name === action.product.name
       );
@@ -17,12 +20,12 @@ function cartReducer(state, action) {
       update.splice(productIndex, 1);
       return update;
     default:
-      return state;
+      throw new Error();
   }
 }
 
 function ProductProvider({ children }) {
-  const [cart, setCart] = useReducer(cartReducer, []);
+  const [cart, setCart] = useReducer(cartReducer, initialState);
   const value = { cart, setCart };
 
   return <CartContext.Provider value={value}>{children}</CartContext.Provider>;

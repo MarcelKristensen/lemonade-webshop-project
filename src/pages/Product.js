@@ -58,14 +58,14 @@ export default function Product() {
     },
   ];
 
-  function add(product) {
-    setCart({ product, type: "add" });
+  function increment(product) {
+    setCart({ product, type: "increment" });
   }
 
   return (
     <section className="products__list">
       {products.map((product) => (
-        <div key={product.id}>
+        <div product={product} key={product.id}>
           <div className="product">
             <img
               src={process.env.PUBLIC_URL + `/Images/${product.img}`}
@@ -77,7 +77,10 @@ export default function Product() {
               <span className="product__price">{product.price}</span> DKK
             </p>
             <p className="product__description">{product.description}</p>
-            <button className="product__button" onClick={() => add(product)}>
+            <button
+              className="product__button"
+              onClick={() => increment(product)}
+            >
               Add to Cart
             </button>
           </div>

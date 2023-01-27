@@ -6,12 +6,12 @@ import Total from "../components/Total";
 export default function Cart() {
   const { cart, setCart } = useContext(CartContext);
 
-  function add(product) {
-    setCart({ product, type: "add" });
+  function increment(product) {
+    setCart({ product, type: "increment" });
   }
 
-  function remove(product) {
-    setCart({ product, type: "remove" });
+  function decrement(product) {
+    setCart({ product, type: "decrement" });
   }
 
   return (
@@ -20,7 +20,7 @@ export default function Cart() {
         <div>
           <h3>Shopping Cart</h3>
           {cart?.map((product) => (
-            <div key={product.name}>
+            <div product={product} key={product.id}>
               <div className="cartProduct">
                 <img
                   className="cartProduct__image"
@@ -36,8 +36,8 @@ export default function Cart() {
                   </p>
 
                   <div className="cartProduct__incrDec">
-                    <button onClick={() => add(product)}>+</button>
-                    <button onClick={() => remove(product)}>-</button>
+                    <button onClick={() => increment(product)}>+</button>
+                    <button onClick={() => decrement(product)}>-</button>
                   </div>
                 </div>
               </div>
